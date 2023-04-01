@@ -20,6 +20,12 @@ Kibana is a visualization and exploration tool for Elasticsearch data. It provid
 
 In this setup, Kibana is configured using the `kibana:7.16.2` image. The container is named `kibana` and restarts automatically. Kibana communicates with Elasticsearch via the specified URL (http://elasticsearch:9200) and exposes port 5601 for accessing the Kibana dashboard. The service depends on the Elasticsearch service to be available before starting.
 
+We create an index pattern to retrieve logstash parse requests.
+![index pattern creation](https://github.com/Rorschach-Lone/Siem/blob/main/image/Pasted%20image%2020230401160634.png)
+Here we check that our index retrieves the request.
+![number of request got](https://github.com/Rorschach-Lone/Siem/blob/main/image/Pasted%20image%2020230401160846.png)
+Finally we can visualise the requests in kibana.
+![kibana visualisation](https://github.com/Rorschach-Lone/Siem/blob/main/image/image.png)
 ### Apache Log Generator
 
 The Apache log generator is a custom Docker service that generates Apache log files using the `mingrammer/flog` image. The container is named `apache_log_generator` and restarts automatically. The generator creates Apache logs using the "apache_common" format and writes them to the `/logs/apache.log` file. The logs are stored in the `./logs/` directory on the host machine, which is also mounted as a volume in the Logstash container.
